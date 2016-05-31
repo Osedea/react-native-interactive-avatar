@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/Osedea/react-native-interactive-avatar/issues"
   },
-  "homepage": "https://github.com/Osedea/react-native-interactive-avatar#readme"
+  "homepage": "https://github.com/Osedea/react-native-interactive-avatar#readme",
+  "dependencies": {
+    "react": "^15.0.2",
+    "react-native": "^0.26.2",
+    "react-native-image-picker": "^0.18.17"
+  }
 }
