@@ -1,0 +1,25 @@
+{
+  "name": "react-native-interactive-avatar",
+  "version": "1.0.0",
+  "description": "An avatar allowing you to click on it to change the image",
+  "main": "Avatar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Osedea/react-native-interactive-avatar.git"
+  },
+  "keywords": [
+    "Avatar",
+    "react-native",
+    "pick",
+    "interactive"
+  ],
+  "author": "Adrien Thiery <adrien.thiery@osedea.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Osedea/react-native-interactive-avatar/issues"
+  },
+  "homepage": "https://github.com/Osedea/react-native-interactive-avatar#readme"
+}
