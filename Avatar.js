@@ -16,12 +16,12 @@ import React, { Component } from 'react';
 
 import {
     Image,
+    NativeModules,
     Platform,
     StyleSheet,
     TouchableWithoutFeedback,
 } from 'react-native';
 
-import { ImagePickerManager } from 'NativeModules';
 const AVATAR_OPTIONS = {
     title: 'Pick your image',
     cancelButtonTitle: 'Cancel',
@@ -152,7 +152,7 @@ export default class Avatar extends Component {
     );
 
     handleInteractivePress = () => {
-        ImagePickerManager.showImagePicker(
+        NativeModules.ImagePickerManager.showImagePicker(
             {
               ...AVATAR_OPTIONS,
               ...this.props.pickerOptions
