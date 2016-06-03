@@ -1,6 +1,6 @@
 {
   "name": "react-native-interactive-avatar",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "An avatar allowing you to click on it to change the image",
   "main": "Avatar.js",
   "scripts": {

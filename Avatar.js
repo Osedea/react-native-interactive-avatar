@@ -45,7 +45,8 @@ const AVATAR_OPTIONS = {
 
 const colors = {
     defaultBackgroundColor: '#AAAAAA',
-    defaultBorderColor: '#FFFFFF'
+    defaultBorderColor: '#FFFFFF',
+    defaultOverlayColor: '#FFFFFF',
 };
 
 const styles = StyleSheet.create({
