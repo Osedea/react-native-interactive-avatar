@@ -53,6 +53,11 @@ const styles = StyleSheet.create({
     avatar: {
         backgroundColor: colors.defaultBackgroundColor,
     },
+    miniAvatar: {
+        width: 20,
+        height: 20,
+        borderRadius: 10,
+    },
     verySmallAvatar: {
         width: 40,
         height: 40,
@@ -91,6 +96,7 @@ export default class Avatar extends Component {
         pickerOptions: React.PropTypes.object, // TODO: Define better
         size: React.PropTypes.oneOf([
             'default',
+            'mini',
             'verySmall',
             'small',
             'medium',
