@@ -16,11 +16,12 @@ import React, { Component } from 'react';
 
 import {
     Image,
-    NativeModules,
     Platform,
     StyleSheet,
     TouchableWithoutFeedback,
 } from 'react-native';
+
+import ImagePicker from 'react-native-image-picker';
 
 const AVATAR_OPTIONS = {
     title: 'Pick your image',
@@ -87,13 +88,14 @@ const styles = StyleSheet.create({
 export default class Avatar extends Component {
     static propTypes = {
         interactive: React.PropTypes.bool,
-        isRequire: React.PropTypes.bool,
-        placeholder: React.PropTypes.number,
         onChange: React.PropTypes.func, // called on change when interactive is true
         onChangeFailed: React.PropTypes.func, // called on change failure when interactive is true
         onPress: React.PropTypes.func,
         overlayColor: React.PropTypes.string, // On android only, should be the same than the backgroundColor of the surrounding View
         pickerOptions: React.PropTypes.object, // TODO: Define better
+        placeholderSource: React.PropTypes.number,
+        placeholderURI: React.PropTypes.string,
+        resizeMode: Image.propTypes.resizeMode,
         size: React.PropTypes.oneOf([
             'default',
             'mini',
@@ -101,68 +103,24 @@ export default class Avatar extends Component {
             'small',
             'medium',
         ]),
-        source: React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            React.PropTypes.number, // if require
-        ]),
+        source: Image.propTypes.source,
         style: Image.propTypes.style,
-        // if true, allows to select a new image on Press (if no onPress function is defined)
+        uri: React.PropTypes.string,
         withBorder: React.PropTypes.bool,
     };
 
     static defaultProps = {
         overlayColor: colors.defaultOverlayColor,
+        resizeMode: 'cover',
     };
 
-    constructor(props) {
-        super(props);
-
-        this.placeholder = this.props.placeholder; // This should be an image
-
-        this.state = {
-            source: this.getAppropriateSource(props.source),
-        };
-    }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            source: this.getAppropriateSource(nextProps.source),
-        });
-    }
-
-    getAppropriateSource = (source) => {
-        let appropriateSource = source;
-
-        if (!source) {
-            appropriateSource = this.placeholder;
-        } else if (!this.props.isRequire) {
-            appropriateSource = { uri: source };
-        }
-
-        return appropriateSource;
-    };
-
-    getImage = () => (
-        <Image
-            style={[
-                Platform.OS === 'ios'
-                    ? {}
-                    : { overlayColor: this.props.overlayColor },
-                styles.avatar,
-                styles[`${this.props.size}Avatar`],
-                this.props.withBorder ? styles.border : {},
-                this.props.style,
-            ]}
-            resizeMode={'cover'}
-            source={this.state.source}
-        />
-    );
+    state = {};
 
     handleInteractivePress = () => {
-        NativeModules.ImagePickerManager.showImagePicker(
+        ImagePicker.showImagePicker(
             {
-              ...AVATAR_OPTIONS,
-              ...this.props.pickerOptions
+                ...AVATAR_OPTIONS,
+                ...this.props.pickerOptions,
             },
             (response) => {
                 if (response.error) {
@@ -193,22 +151,63 @@ export default class Avatar extends Component {
         );
     };
 
+    getAppropriateSource = () => {
+        let source = this.props.source;
+
+        if (this.props.uri) {
+            source = { uri: this.props.uri };
+        }
+
+        if (Platform.OS === 'android' && !source) {
+            source = this.getPlaceholder();
+        }
+
+        return source;
+    }
+
+    getPlaceholder = () => {
+        let placeholder = this.props.placeholderSource;
+
+        if (!placeholder && this.props.placeholderURI) {
+            placeholder = { uri: this.props.placeholderURI };
+        }
+
+        return placeholder;
+    }
+
+    renderAvatarImage = () => (
+        <Image
+            style={[
+                Platform.OS === 'ios'
+                    ? {}
+                    : { overlayColor: this.props.overlayColor },
+                styles.avatar,
+                styles[`${this.props.size}Avatar`],
+                this.props.withBorder ? styles.border : {},
+                this.props.style,
+            ]}
+            defaultSource={this.getPlaceholder()}
+            resizeMode={this.props.resizeMode}
+            source={this.state.source || this.getAppropriateSource()}
+        />
+    );
+
     render() {
         if (this.props.onPress) {
             return (
                 <TouchableWithoutFeedback onPress={this.props.onPress}>
-                    {this.getImage()}
+                    {this.renderAvatarImage()}
                 </TouchableWithoutFeedback>
             );
         }
         if (this.props.interactive) {
             return (
                 <TouchableWithoutFeedback onPress={this.handleInteractivePress}>
-                    {this.getImage()}
+                    {this.renderAvatarImage()}
                 </TouchableWithoutFeedback>
             );
         }
 
-        return this.getImage();
+        return this.renderAvatarImage();
     }
 }
