@@ -1,6 +1,6 @@
 {
   "name": "react-native-interactive-avatar",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "An avatar allowing you to click on it to change the image",
   "main": "Avatar.js",
   "scripts": {
@@ -23,7 +23,8 @@
   },
   "homepage": "https://github.com/Osedea/react-native-interactive-avatar#readme",
   "dependencies": {
-    "react-native-image-picker": "^0.25.1"
+    "react-native-image-picker": "^0.26.7",
+    "prop-types": "^15.5.0"
   },
   "devDependencies": {
     "eslint-config-osedea": "^0.4.2"

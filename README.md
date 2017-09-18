@@ -2,6 +2,8 @@
 An avatar allowing you to click on it to change the image
 
 # [Documentation For React-native 0.26.2+ to 0.40](https://github.com/Osedea/react-native-interactive-avatar/tree/b63c2c131d349b0b8377f6770715b6f1f17bebc9)
+# For React-native 0.40 to 0.47, use ^1.0.0
+# For React-native 0.48+, use ^2.0.0
 
 # For React-native 0.40+
 
@@ -64,6 +66,8 @@ export default class Example extends Component {
 
 See more in the [Example Project](./example)
 
+:warning: Use npm to install the dependencies of the example project. Yarn is ignoring the `.npmignore` and therefore installing `example/` in the `node_modules/react-native-interactive-avatar` relative dependency.
+
 ## Properties
 
 Property name | Type | Remark
@@ -87,6 +91,6 @@ This component uses the awesome [react-native-image-picker](https://github.com/m
 ## Installation
 
 ```
-    npm i --save react-native-interactive-avatar react-native-image-picker
+    npm i --save react-native-interactive-avatar
     react-native link react-native-image-picker
 ```

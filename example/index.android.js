@@ -41,18 +41,18 @@ export default class example extends Component {
                         overlayColor={'#F5FCFF'}
                     />
                     <Avatar
-                        source={require('example/images/logo.png')}
+                        source={require('RNInteractiveAvatarExample/images/logo.png')}
                         size={'medium'}
                         overlayColor={'#F5FCFF'}
                     />
                     <Avatar
-                        source={require('example/images/logo.png')}
+                        source={require('RNInteractiveAvatarExample/images/logo.png')}
                         size={'small'}
                         overlayColor={'#F5FCFF'}
                     />
                     <Avatar
                         withBorder
-                        placeholderSource={require('example/images/placeholder.png')}
+                        placeholderSource={require('RNInteractiveAvatarExample/images/placeholder.png')}
                         style={{
                             borderColor: '#000000',
                             marginLeft: 5,
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('example', () => example);
+AppRegistry.registerComponent('RNInteractiveAvatarExample', () => example);

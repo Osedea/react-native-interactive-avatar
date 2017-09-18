@@ -35,21 +35,21 @@ export default class example extends Component {
                     <Avatar
                         uri={'https://media2.giphy.com/media/sbLpwwHlgls8E/giphy.gif'}
                         size={'default'}
-                        placeholderSource={require('example/images/placeholder.png')}
+                        placeholderSource={require('RNInteractiveAvatarExample/images/placeholder.png')}
                         interactive
                         onChange={this.handleImageChange}
                     />
                     <Avatar
-                        source={require('example/images/logo.png')}
+                        source={require('RNInteractiveAvatarExample/images/logo.png')}
                         size={'medium'}
                     />
                     <Avatar
-                        source={require('example/images/logo.png')}
+                        source={require('RNInteractiveAvatarExample/images/logo.png')}
                         size={'small'}
                     />
                     <Avatar
                         withBorder
-                        placeholderSource={require('example/images/placeholder.png')}
+                        placeholderSource={require('RNInteractiveAvatarExample/images/placeholder.png')}
                         interactive
                         style={{
                             borderColor: '#000000',
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     },
 });
 
-AppRegistry.registerComponent('example', () => example);
+AppRegistry.registerComponent('RNInteractiveAvatarExample', () => example);
