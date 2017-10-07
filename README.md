@@ -11,7 +11,7 @@ The component might work on older versions
 
 ## Example
 
-```
+```js
 import Avatar from 'react-native-interactive-avatar';
 
 export default class Example extends Component {
